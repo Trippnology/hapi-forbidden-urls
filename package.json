@@ -28,6 +28,6 @@
 		"@hapi/hapi": "21.3.12"
 	},
 	"repository": {
-		"url": "https://github.com/Trippnology/hapi-forbidden-urls"
+		"url": "git+https://github.com/Trippnology/hapi-forbidden-urls.git"
 	}
 }
