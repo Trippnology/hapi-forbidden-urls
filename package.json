@@ -26,5 +26,8 @@
 	"description": "Hapi plugin to safely redirect requests to URLs commonly used in 'spray and pray' attacks.",
 	"devDependencies": {
 		"@hapi/hapi": "21.3.12"
+	},
+	"repository": {
+		"url": "https://github.com/Trippnology/hapi-forbidden-urls"
 	}
 }
