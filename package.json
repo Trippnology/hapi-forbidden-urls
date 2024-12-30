@@ -1,12 +1,30 @@
 {
-  "name": "@trippnology/hapi-forbidden-urls",
-  "version": "0.0.1",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "description": "Safely redirects URLs commonly used in 'spray and pray' attacks."
+	"name": "@trippnology/hapi-forbidden-urls",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"hapi",
+		"plugin",
+		"forbidden",
+		"urls",
+		"security",
+		"redirect",
+		"protect",
+		"block",
+		"prevent access",
+		"server",
+		"middleware"
+	],
+	"author": {
+		"name": "Rikki Tripp - Trippnology",
+		"url": "https://trippnology.com/"
+	},
+	"license": "MIT",
+	"description": "Hapi plugin to safely redirect requests to URLs commonly used in 'spray and pray' attacks.",
+	"devDependencies": {
+		"@hapi/hapi": "21.3.12"
+	}
 }

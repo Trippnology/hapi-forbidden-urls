@@ -1,6 +1,6 @@
 # Hapi Forbidden URLs
 
-Safely redirects URLs commonly used in 'spray and pray' attacks.
+Hapi plugin to safely redirect requests to URLs commonly used in 'spray and pray' attacks.
 
 ## Installation
 
@@ -11,7 +11,6 @@ Safely redirects URLs commonly used in 'spray and pray' attacks.
 ```js
 const Hapi = require('@hapi/hapi');
 const routes = require('./routes'); // Your normal routes
-const forbiddenUrlsPlugin = require('');
 
 const init = async () => {
 	const server = Hapi.server({
@@ -23,10 +22,20 @@ const init = async () => {
 	server.route(routes);
 
 	// Register the forbidden URLs plugin
-	await server.register(forbiddenUrlsPlugin);
+	await server.register({
+		plugin: require('@trippnology/hapi-forbidden-urls'),
+		// Optionally specify your own list of URLs and methods, and target host to redirect to
+		options: {
+			forbidden_urls: ['/.env'],
+			method: 'GET',
+			redirect_to: 'https://www.google.com',
+		},
+	});
 
 	await server.start();
 	console.log(`Server running on ${server.info.uri}`);
+	console.log(`Visiting ${server.info.uri} should show hello world`);
+	console.log(`Visiting ${server.info.uri}/.env should redirect`);
 };
 
 process.on('unhandledRejection', (err) => {
@@ -35,7 +44,42 @@ process.on('unhandledRejection', (err) => {
 });
 
 init();
+
 ```
+
+### Options
+
+| Option           | Type            | Default            | Notes                                                                            |
+| ---------------- | --------------- | ------------------ | -------------------------------------------------------------------------------- |
+| `forbidden_urls` | Array           | See list below     | Must follow hapi's [path parameter rules](https://hapi.dev/api/#path-parameters) |
+| `method`         | String or Array | `['GET', 'POST']`  | See [route options](https://hapi.dev/api/#-serverrouteroute) for details         |
+| `redirect_to`    | String          | `http://127.0.0.1` | Must **not** end in a `/`                                                        |
+
+### Default URLs
+
+This is the list of URLs that are redirected if you do not supply your own:
+
+```
+'/.env',
+'/.git/{p?}',
+'/.git2/{p?}',
+'/_profiler/{p?}',
+'/backup/{p?}',
+'/cgi-bin/{p?}',
+'/cms/{p?}',
+'/console/{p?}',
+'/crm/{p?}',
+'/default.asp/{p?}',
+'/default.php/{p?}',
+'/demo/{p?}',
+'/dns-query/{p?}',
+'/index.php/{p?}',
+'/lib/{p?}',
+'/phpunit/{p?}',
+'/vendor/{p?}',
+```
+
+Adding `/{p?}` to the end means that sub-paths are covered too.
 
 ## Contributing
 
@@ -55,4 +99,4 @@ Copyright Rikki Tripp - Trippnology
 
 ## License
 
-MIT
+MIT See: [LICENSE](./LICENSE)
