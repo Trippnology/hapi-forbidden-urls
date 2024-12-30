@@ -1,3 +1,5 @@
+const pkg = require('./package.json');
+
 const forbidden_urls = [
 	'/.env',
 	'/.git/{p?}',
@@ -36,8 +38,8 @@ const forbiddenUrlsPlugin = {
 			});
 		});
 	},
-	name: 'forbiddenUrlsPlugin',
-	version: '1.0.0',
+	name: 'forbiddenURLs',
+	version: pkg.version,
 };
 
 module.exports = forbiddenUrlsPlugin;
