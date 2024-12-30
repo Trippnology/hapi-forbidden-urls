@@ -5,7 +5,19 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"keywords": [],
+	"keywords": [
+		"hapi",
+		"plugin",
+		"forbidden",
+		"urls",
+		"security",
+		"redirect",
+		"protect",
+		"block",
+		"prevent access",
+		"server",
+		"middleware"
+	],
 	"author": {
 		"name": "Rikki Tripp - Trippnology",
 		"url": "https://trippnology.com/"
