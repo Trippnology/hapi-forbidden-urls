@@ -11,7 +11,6 @@ Safely redirects URLs commonly used in 'spray and pray' attacks.
 ```js
 const Hapi = require('@hapi/hapi');
 const routes = require('./routes'); // Your normal routes
-const forbiddenUrlsPlugin = require('');
 
 const init = async () => {
 	const server = Hapi.server({
@@ -23,7 +22,10 @@ const init = async () => {
 	server.route(routes);
 
 	// Register the forbidden URLs plugin
-	await server.register(forbiddenUrlsPlugin);
+	await server.register({
+		plugin: require('@trippnology/hapi-forbidden-urls'),
+		options: {},
+	});
 
 	await server.start();
 	console.log(`Server running on ${server.info.uri}`);

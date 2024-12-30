@@ -27,9 +27,7 @@ const forbiddenUrlsPlugin = {
 				method: ['GET', 'POST'],
 				path: url,
 				options: {
-					auth: {
-						mode: 'optional',
-					},
+					auth: false,
 				},
 				handler: (request, h) => {
 					// Redirect back to the attacker's own machine lol

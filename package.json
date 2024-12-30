@@ -8,5 +8,8 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "description": "Safely redirects URLs commonly used in 'spray and pray' attacks."
+  "description": "Safely redirects URLs commonly used in 'spray and pray' attacks.",
+  "devDependencies": {
+    "@hapi/hapi": "21.3.12"
+  }
 }
