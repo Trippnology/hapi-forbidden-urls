@@ -44,6 +44,7 @@ process.on('unhandledRejection', (err) => {
 });
 
 init();
+
 ```
 
 ### Options
@@ -98,4 +99,4 @@ Copyright Rikki Tripp - Trippnology
 
 ## License
 
-MIT
+MIT See: [LICENSE](./LICENSE)
