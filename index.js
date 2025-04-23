@@ -18,7 +18,7 @@ const defaults = {
 		'/phpunit/{p?}',
 		'/vendor/{p?}',
 	],
-	method: ['GET', 'POST'],
+	method: '*',
 	// Redirect back to the attacker's own machine lol
 	redirect_to: 'http://127.0.0.1',
 };
