@@ -1,6 +1,6 @@
 {
 	"name": "@trippnology/hapi-forbidden-urls",
-	"version": "1.0.0",
+	"version": "1.1.1",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -26,5 +26,8 @@
 	"description": "Hapi plugin to safely redirect requests to URLs commonly used in 'spray and pray' attacks.",
 	"devDependencies": {
 		"@hapi/hapi": "21.3.12"
+	},
+	"repository": {
+		"url": "git+https://github.com/Trippnology/hapi-forbidden-urls.git"
 	}
 }
