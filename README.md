@@ -24,8 +24,9 @@ const init = async () => {
 	// Register the forbidden URLs plugin
 	await server.register({
 		plugin: require('@trippnology/hapi-forbidden-urls'),
-		// Optionally specify your own list of URLs and methods, and target host to redirect to
+		// Optionally specify your own list of extensions, URLs, methods, and target host to redirect to
 		options: {
+			forbidden_extensions: ['php', 'rb'],
 			forbidden_urls: ['/.env'],
 			method: 'GET',
 			redirect_to: 'https://www.google.com',
@@ -44,18 +45,28 @@ process.on('unhandledRejection', (err) => {
 });
 
 init();
-
 ```
 
 ### Options
 
-| Option           | Type            | Default            | Notes                                                                            |
-| ---------------- | --------------- | ------------------ | -------------------------------------------------------------------------------- |
-| `forbidden_urls` | Array           | See list below     | Must follow hapi's [path parameter rules](https://hapi.dev/api/#path-parameters) |
-| `method`         | String or Array | `['GET', 'POST']`  | See [route options](https://hapi.dev/api/#-serverrouteroute) for details         |
-| `redirect_to`    | String          | `http://127.0.0.1` | Must **not** end in a `/`                                                        |
+| Option                 | Type            | Default            | Notes                                                                            |
+| ---------------------- | --------------- | ------------------ | -------------------------------------------------------------------------------- |
+| `forbidden_extensions` | Array           | See list below     | Do not include the dot, e.g. `php` not `.php`                                    |
+| `forbidden_urls`       | Array           | See list below     | Must follow hapi's [path parameter rules](https://hapi.dev/api/#path-parameters) |
+| `method`               | String or Array | `['GET', 'POST']`  | See [route options](https://hapi.dev/api/#-serverrouteroute) for details         |
+| `redirect_to`          | String          | `http://127.0.0.1` | Must **not** end in a `/`                                                        |
 
-### Default URLs
+#### Default Extensions
+
+This is the list of extensions that are redirected if you do not supply your own:
+
+```
+'asp',
+'aspx',
+'php',
+```
+
+#### Default URLs
 
 This is the list of URLs that are redirected if you do not supply your own:
 
@@ -69,11 +80,8 @@ This is the list of URLs that are redirected if you do not supply your own:
 '/cms/{p?}',
 '/console/{p?}',
 '/crm/{p?}',
-'/default.asp/{p?}',
-'/default.php/{p?}',
 '/demo/{p?}',
 '/dns-query/{p?}',
-'/index.php/{p?}',
 '/lib/{p?}',
 '/phpunit/{p?}',
 '/vendor/{p?}',
