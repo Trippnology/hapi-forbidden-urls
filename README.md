@@ -53,7 +53,7 @@ init();
 | ---------------------- | --------------- | ------------------ | -------------------------------------------------------------------------------- |
 | `forbidden_extensions` | Array           | See list below     | Do not include the dot, e.g. `php` not `.php`                                    |
 | `forbidden_urls`       | Array           | See list below     | Must follow hapi's [path parameter rules](https://hapi.dev/api/#path-parameters) |
-| `method`               | String or Array | `['GET', 'POST']`  | See [route options](https://hapi.dev/api/#-serverrouteroute) for details         |
+| `method`               | String or Array | `*`                | See [route options](https://hapi.dev/api/#-serverrouteroute) for details         |
 | `redirect_to`          | String          | `http://127.0.0.1` | Must **not** end in a `/`                                                        |
 
 #### Default Extensions
